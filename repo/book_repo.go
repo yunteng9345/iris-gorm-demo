@@ -2,8 +2,8 @@ package repo
 
 import (
 	"github.com/spf13/cast"
-	"print-chn/datasource"
-	"print-chn/models"
+	"iris-gorm-demo/datasource"
+	"iris-gorm-demo/models"
 )
 
 type BookRepository interface {
@@ -51,4 +51,3 @@ func (n bookRepository) DelBook(id uint) (err error) {
 	err = db.Unscoped().Delete(&book).Error
 	return
 }
-

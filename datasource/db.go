@@ -3,7 +3,7 @@ package datasource
 import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"print-chn/conf"
+	"iris-gorm-demo/conf"
 	"strings"
 )
 

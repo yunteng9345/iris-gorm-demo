@@ -1,10 +1,10 @@
 package repo
 
 import (
+	"iris-gorm-demo/datasource"
+	"iris-gorm-demo/models"
+	"iris-gorm-demo/utils"
 	"log"
-	"print-chn/datasource"
-	"print-chn/models"
-	"print-chn/utils"
 )
 
 type UserRepository interface {
@@ -17,7 +17,7 @@ func NewUserRepository() UserRepository {
 	return &userRepository{}
 }
 
-type userRepository struct {}
+type userRepository struct{}
 
 // login
 func (n userRepository) GetUserByUserNameAndPwd(username string, password string) (user models.User) {
@@ -37,7 +37,7 @@ func (n userRepository) GetUserByUsername(username string) (user models.User) {
 func (n userRepository) Save(user models.User) (int, models.User) {
 	code := 0
 	tx := datasource.GetDB().Begin()
-	defer utils.Defer(tx,&code)
+	defer utils.Defer(tx, &code)
 	if user.ID != 0 {
 		var oldUser models.User
 		datasource.GetDB().First(&oldUser, user.ID)

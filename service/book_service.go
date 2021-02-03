@@ -1,8 +1,8 @@
 package service
 
 import (
-	"print-chn/models"
-	"print-chn/repo"
+	"iris-gorm-demo/models"
+	"iris-gorm-demo/repo"
 )
 
 type BookService interface {
@@ -13,7 +13,6 @@ type BookService interface {
 }
 
 type bookService struct {
-
 }
 
 func NewBookService() BookService {
@@ -22,8 +21,8 @@ func NewBookService() BookService {
 
 var bookRepo = repo.NewBookRepository()
 
-func (u bookService) GetBookList(m map[string]interface{}) (result models.Result)  {
-	total,books := bookRepo.GetBookList(m)
+func (u bookService) GetBookList(m map[string]interface{}) (result models.Result) {
+	total, books := bookRepo.GetBookList(m)
 	maps := make(map[string]interface{}, 2)
 	maps["Total"] = total
 	maps["List"] = books
@@ -46,8 +45,8 @@ func (u bookService) SaveBook(book models.Book) (result models.Result) {
 	return
 }
 
-func (u bookService) GetBook(id uint) (result models.Result)  {
-	book,err := bookRepo.GetBook(id)
+func (u bookService) GetBook(id uint) (result models.Result) {
+	book, err := bookRepo.GetBook(id)
 	if err != nil {
 		result.Code = -1
 		result.Msg = err.Error()
@@ -59,7 +58,7 @@ func (u bookService) GetBook(id uint) (result models.Result)  {
 	return
 }
 
-func (u bookService)DelBook(id uint) (result models.Result)  {
+func (u bookService) DelBook(id uint) (result models.Result) {
 	err := bookRepo.DelBook(id)
 	if err != nil {
 		result.Code = -1
@@ -70,18 +69,3 @@ func (u bookService)DelBook(id uint) (result models.Result)  {
 	}
 	return
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

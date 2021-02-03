@@ -1,0 +1,8 @@
+{
+  "Port": "8848",
+  "DBUserName": "root",
+  "DBPassword": "1234",
+  "DBIp": "127.0.0.1",
+  "DBPort": "3206",
+  "DBName": "irisdb"
+}
